@@ -1,0 +1,8 @@
+.venv/
+models/
+__pycache__/
+*.pyc
+outputs/
+.gradio/
+flagged/
+*.log
