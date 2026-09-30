@@ -36,3 +36,5 @@ desktop.ini
 
 # Submission artifacts (kept locally only)
 submission/
+presentation/
+requirements-docs.txt
