@@ -59,7 +59,7 @@ See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for details: the AI Hub model I
 | Speech-to-text (fallback / baseline) | Whisper-Base ONNX (encoder FP32, decoder INT8) | [onnx-community/whisper-base](https://huggingface.co/onnx-community/whisper-base) | ONNX Runtime CPU EP |
 | Study assistant | Phi-3.5-mini-instruct, INT4 AWQ | [microsoft/Phi-3.5-mini-instruct-onnx](https://huggingface.co/microsoft/Phi-3.5-mini-instruct-onnx) | onnxruntime-genai |
 
-Qualcomm AI Hub reports Whisper-Base on Snapdragon X Elite at **~46 ms per encoder pass** (one pass covers 30 s of audio) and **~3.8 ms per decoder token** on the NPU. That makes it roughly **100x faster than real time**.
+Measured on a real Snapdragon X Elite NPU (via Qualcomm AI Hub), Whisper-Base takes **45.5 ms per encoder pass** (one pass covers 30 s of audio) and **3.8 ms per decoder token**. That is about **80x faster than real time**, with every op on the NPU. See [Benchmarks](#benchmarks-measured-on-a-real-snapdragon-x-elite-npu).
 
 ## Quick start (Snapdragon HP PC, Windows 11 ARM64)
 
@@ -90,17 +90,21 @@ It works on any Windows x64 PC too. The setup script detects the CPU and install
 .\.venv\Scripts\python -m core.bench --llm                                    # NPU vs CPU benchmark
 ```
 
-## Benchmarks
+## Benchmarks: measured on a real Snapdragon X Elite NPU
 
-Sample: an 85 s lecture (`samples/sample_lecture.wav`), Whisper-Base. Run `python -m core.bench` to reproduce; the results are saved to `outputs/benchmarks.json`.
+The AI Hub Whisper-Base context binaries were run on a **Snapdragon X Elite CRD hosted by Qualcomm AI Hub** using [`scripts/aihub_cloud_npu.py`](scripts/aihub_cloud_npu.py). The raw results are in [`docs/benchmarks/aihub_cloud_npu.json`](docs/benchmarks/aihub_cloud_npu.json), and the jobs are [encoder profile](https://workbench.aihub.qualcomm.com/jobs/jp3zyzwl5/), [decoder profile](https://workbench.aihub.qualcomm.com/jobs/jgoljl4xg/) and [encoder inference on the sample lecture](https://workbench.aihub.qualcomm.com/jobs/jpvljl9j5/).
+
+Sample: an 85 s lecture (`samples/sample_lecture.wav`), Whisper-Base.
 
 | Device | Backend | Processing time | Speed | Encoder / 30 s | Decoder / token |
 |---|---|---|---|---|---|
-| Intel Core i5-7200U (2016 laptop, dev machine) | ONNX Whisper, CPU | 14.9 s | 5.7x real time | 1312 ms | 44.8 ms |
-| Snapdragon X Elite (AI Hub reference, NPU) | AI Hub Whisper, QNN NPU | - | ~100x real time* | 46 ms | 3.8 ms |
-| Snapdragon HP PC (your run) | AI Hub Whisper, QNN NPU | *run `python -m core.bench`* | | | |
+| Intel Core i5-7200U (2016 laptop) | ONNX Whisper, CPU | 14.9 s | 5.7x real time | 1312 ms | 44.8 ms |
+| **Snapdragon X Elite** | **AI Hub Whisper, Hexagon NPU** | **~1.1 s** | **~80x real time** | **45.5 ms** | **3.8 ms** |
+| | *NPU speed-up* | *~14x* | | *28.8x* | *11.8x* |
 
-\* From Qualcomm AI Hub's published per-inference latencies for Whisper-Base on Snapdragon X Elite.
+- **100% on the NPU:** all 556 encoder ops and 975 decoder ops run on the Hexagon HTP. Peak memory is 34 MB for the encoder and 60 MB for the decoder.
+- **Accuracy:** the NPU's FP16 encoder output matches the FP32 CPU reference (cosine similarity **0.999** on every chunk), and decoding it gives the correct transcript of the whole lecture.
+- **Reproduce:** `python scripts/aihub_cloud_npu.py` (needs a free AI Hub token), or `python -m core.bench` on a Snapdragon PC.
 
 ## Project layout
 

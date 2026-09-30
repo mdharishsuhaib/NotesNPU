@@ -1,8 +1,36 @@
+# --- Local environment & large downloaded models (recreated by setup.bat) ---
 .venv/
+venv/
+env/
 models/
+
+# --- Python caches ---
 __pycache__/
-*.pyc
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# --- App runtime output (personal transcripts / notes) ---
 outputs/
 .gradio/
 flagged/
 *.log
+
+# --- Secrets & credentials: never commit ---
+.env
+.env.*
+*.ini
+.qai_hub/
+*token*.txt
+*.pem
+*.key
+secrets/
+
+# --- Editor / OS junk ---
+.vscode/
+.idea/
+.cursor/
+Thumbs.db
+desktop.ini
+.DS_Store
+~$*

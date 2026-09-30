@@ -116,6 +116,7 @@ h("6. Why Snapdragon / NPU optimisation")
 bl(C.WHY_SNAPDRAGON)
 tbl([("Device / backend", "Speed", "Encoder / 30 s", "Decoder / token"), *C.BENCH_ROWS],
     [Inches(2.9), Inches(1.4), Inches(1.3), Inches(1.3)])
+bl(C.NPU_PROOF)
 
 h("7. Use cases & impact")
 tbl([("Who", "How NotesNPU helps"), *C.IMPACT], [Inches(1.8), Inches(5.1)])
@@ -137,6 +138,10 @@ if shot.exists():
     doc.add_picture(str(shot), width=Inches(4.2))
 
 out = HERE / "NotesNPU_Description.docx"
+cp = doc.core_properties
+cp.author = cp.last_modified_by = C.AUTHOR
+cp.title, cp.subject, cp.keywords = f"{C.TITLE} - project description", C.TAGLINE, "Snapdragon, NPU, Qualcomm AI Hub, Whisper"
+cp.comments = cp.category = ""
 doc.save(out)
 print("wrote", out)
 

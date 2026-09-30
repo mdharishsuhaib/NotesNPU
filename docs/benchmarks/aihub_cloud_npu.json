@@ -1,0 +1,35 @@
+{
+  "device": "Snapdragon X Elite CRD",
+  "timestamp": "2026-09-30 19:23:49",
+  "jobs": {
+    "profile_encoder": "https://workbench.aihub.qualcomm.com/jobs/jp3zyzwl5/",
+    "profile_decoder": "https://workbench.aihub.qualcomm.com/jobs/jgoljl4xg/",
+    "inference_encoder": "https://workbench.aihub.qualcomm.com/jobs/jpvljl9j5/"
+  },
+  "profile": {
+    "encoder": {
+      "inference_ms": 45.499,
+      "peak_memory_mb": 34.0,
+      "first_load_ms": 422.0,
+      "compute_units": {
+        "NPU": 556
+      }
+    },
+    "decoder": {
+      "inference_ms": 3.807,
+      "peak_memory_mb": 59.8,
+      "first_load_ms": 465.0,
+      "compute_units": {
+        "NPU": 975
+      }
+    }
+  },
+  "encoder_accuracy_cosine_vs_cpu": [
+    0.99908,
+    0.99906,
+    0.99909
+  ],
+  "transcript_from_npu_encoder": "Good morning everyone. Today we will talk about photosynthesis, the process plants use to make food. Photosynthesis happens mainly in the leaves, inside tiny structures called chloroplasts. Chloroplasts contain a green pigment called chlorophyll, which absorbs sunlight. The overall reaction is simple, carbon dioxide plus water, using light energy, produces glucose and oxygen. There are two main stages. The first stage is the light-dependent reactions, which take place in the thylacoid membranes. Here, light energy splits water molecules, releasing oxygen and produces ATP and NADPH. The second stage is the Calvin cycle, which happens in the stroma. The Calvin cycle uses ATP and NADPH to fix carbon dioxide into glucose. 3 factors affect the rate of photosynthesis, light intensity, carbon dioxide concentration, and temperature. Remember, for your exam next Monday, you must be able to draw and label a chloroplast, and explain why photosynthesis is important for life on Earth. It produces the oxygen we breathe and is the base of almost every food chain. Please read Chapter 6 before the next class. Thank you.",
+  "estimated_npu_processing_s": 1.062,
+  "estimated_speed_x_realtime": 79.9
+}

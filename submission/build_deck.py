@@ -179,14 +179,11 @@ bullets(s, Inches(0.6), Inches(3.75), Inches(12.2), Inches(3.4), C.WHY_SNAPDRAGO
 
 # 7. Benchmarks ----------------------------------------------------------
 s = prs.slides.add_slide(BLANK)
-header(s, 7, "Performance: NPU vs CPU", "Benchmarks (Whisper-Base, 85 s lecture)")
+header(s, 7, "Performance: measured on a real Snapdragon NPU", "Benchmarks (Whisper-Base, 85 s lecture)")
 table(s, Inches(0.6), Inches(1.7), Inches(12.1), [("Device / backend", "Speed", "Encoder per 30 s", "Decoder per token"), *C.BENCH_ROWS],
       [Inches(5.2), Inches(2.4), Inches(2.2), Inches(2.3)], size=15, row_h=Inches(0.6))
-rect(s, Inches(0.6), Inches(4.6), Inches(12.1), Inches(1.9), LIGHT)
-text(s, Inches(0.9), Inches(4.75), Inches(11.6), Inches(1.7), [
-    "AI Hub reference: ~28x faster encoder and ~12x faster decoding on the NPU than my laptop-CPU baseline",
-    "A 1-hour lecture transcribes in well under a minute, on battery, with the CPU left free.",
-    "Reproduce: python -m core.bench --llm   (built-in benchmark tab in the app)"], 17, False, DARK)
+rect(s, Inches(0.6), Inches(4.3), Inches(12.1), Inches(2.5), LIGHT)
+bullets(s, Inches(0.8), Inches(4.4), Inches(11.7), Inches(2.4), C.NPU_PROOF, 14, gap=4)
 
 # 8. Impact --------------------------------------------------------------
 s = prs.slides.add_slide(BLANK)
@@ -221,6 +218,10 @@ text(s, Inches(0.8), Inches(3.3), Inches(11.5), Inches(1.0), "NotesNPU: learn mo
 text(s, Inches(0.8), Inches(5.0), Inches(11.5), Inches(1.2), [C.REPO, C.AUTHOR], 18, False, RGBColor(0xBB, 0xBB, 0xC4))
 
 out = HERE / "NotesNPU_Pitch.pptx"
+cp = prs.core_properties
+cp.author = cp.last_modified_by = C.AUTHOR
+cp.title, cp.subject, cp.keywords = f"{C.TITLE} - pitch deck", C.TAGLINE, "Snapdragon, NPU, Qualcomm AI Hub, Whisper"
+cp.comments = cp.category = ""
 prs.save(out)
 print("wrote", out)
 
