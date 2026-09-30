@@ -1,0 +1,23 @@
+{
+  "device": "Snapdragon X Elite CRD",
+  "compute_unit": "cpu",
+  "encoder": {
+    "job_id": "j5m0j0k9g",
+    "job_url": "https://workbench.aihub.qualcomm.com/jobs/j5m0j0k9g/",
+    "inference_ms": 1286.094,
+    "peak_memory_mb": 407.41015625
+  },
+  "decoder": {
+    "job_id": "jgnzjzqqg",
+    "job_url": "https://workbench.aihub.qualcomm.com/jobs/jgnzjzqqg/",
+    "inference_ms": 9.067,
+    "peak_memory_mb": 421.26953125
+  },
+  "sample": {
+    "audio_s": 84.77,
+    "chunks": 3,
+    "tokens": 243
+  },
+  "estimated_cpu_processing_s": 6.062,
+  "estimated_speed_x_realtime": 14.0
+}

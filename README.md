@@ -92,15 +92,15 @@ It works on any Windows x64 PC too. The setup script detects the CPU and install
 
 ## Benchmarks: measured on a real Snapdragon X Elite NPU
 
-The AI Hub Whisper-Base context binaries were run on a **Snapdragon X Elite CRD hosted by Qualcomm AI Hub** using [`scripts/aihub_cloud_npu.py`](scripts/aihub_cloud_npu.py). The raw results are in [`docs/benchmarks/aihub_cloud_npu.json`](docs/benchmarks/aihub_cloud_npu.json), and the jobs are [encoder profile](https://workbench.aihub.qualcomm.com/jobs/jp3zyzwl5/), [decoder profile](https://workbench.aihub.qualcomm.com/jobs/jgoljl4xg/) and [encoder inference on the sample lecture](https://workbench.aihub.qualcomm.com/jobs/jpvljl9j5/).
+The AI Hub Whisper-Base context binaries were run on a **Snapdragon X Elite CRD hosted by Qualcomm AI Hub** using [`scripts/aihub_cloud_npu.py`](scripts/aihub_cloud_npu.py). The raw results are in [`docs/benchmarks/aihub_cloud_npu.json`](docs/benchmarks/aihub_cloud_npu.json), and the jobs are [encoder profile](https://workbench.aihub.qualcomm.com/jobs/jp3zyzwl5/), [decoder profile](https://workbench.aihub.qualcomm.com/jobs/jgoljl4xg/) and [encoder inference on the sample lecture](https://workbench.aihub.qualcomm.com/jobs/jpvljl9j5/). The CPU baseline is NotesNPU's ONNX Whisper-Base profiled on the **same device's Oryon CPU** with [`scripts/aihub_cloud_cpu.py`](scripts/aihub_cloud_cpu.py) ([encoder](https://workbench.aihub.qualcomm.com/jobs/j5m0j0k9g/), [decoder](https://workbench.aihub.qualcomm.com/jobs/jgnzjzqqg/); raw results in [`docs/benchmarks/aihub_cloud_cpu.json`](docs/benchmarks/aihub_cloud_cpu.json)). Processing times for the 85 s lecture = 3 chunks x encoder + 243 tokens x decoder.
 
 Sample: an 85 s lecture (`samples/sample_lecture.wav`), Whisper-Base.
 
 | Device | Backend | Processing time | Speed | Encoder / 30 s | Decoder / token |
 |---|---|---|---|---|---|
-| Intel Core i5-7200U (2016 laptop) | ONNX Whisper, CPU | 14.9 s | 5.7x real time | 1312 ms | 44.8 ms |
+| Snapdragon X Elite | ONNX Whisper, Oryon CPU | ~6.1 s | ~14x real time | 1286 ms | 9.1 ms |
 | **Snapdragon X Elite** | **AI Hub Whisper, Hexagon NPU** | **~1.1 s** | **~80x real time** | **45.5 ms** | **3.8 ms** |
-| | *NPU speed-up* | *~14x* | | *28.8x* | *11.8x* |
+| | *NPU speed-up* | *~5.7x* | | *28.3x* | *2.4x* |
 
 - **100% on the NPU:** all 556 encoder ops and 975 decoder ops run on the Hexagon HTP. Peak memory is 34 MB for the encoder and 60 MB for the decoder.
 - **Accuracy:** the NPU's FP16 encoder output matches the FP32 CPU reference (cosine similarity **0.999** on every chunk), and decoding it gives the correct transcript of the whole lecture.

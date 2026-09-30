@@ -47,16 +47,16 @@ WHY_SNAPDRAGON = [
 ]
 
 BENCH_ROWS = [
-    ("Intel i5-7200U laptop (dev machine), CPU", "5.7x real time (14.9 s)", "1312 ms", "44.8 ms"),
-    ("Snapdragon X Elite NPU (measured on Qualcomm AI Hub)", "~80x real time (~1.1 s)", "45.5 ms", "3.8 ms"),
-    ("NPU speed-up", "~14x end to end", "28.8x", "11.8x"),
+    ("Snapdragon X Elite, Oryon CPU (measured on Qualcomm AI Hub)", "~14x real time (~6.1 s)", "1286 ms", "9.1 ms"),
+    ("Snapdragon X Elite, Hexagon NPU (measured on Qualcomm AI Hub)", "~80x real time (~1.1 s)", "45.5 ms", "3.8 ms"),
+    ("NPU speed-up", "~5.7x end to end", "28.3x", "2.4x"),
 ]
 
 NPU_PROOF = [
     "Measured on a real Snapdragon X Elite (Qualcomm AI Hub hosted device): encoder 45.5 ms per 30 s of audio, decoder 3.8 ms per token.",
     "100% of ops on the NPU: 556 encoder ops + 975 decoder ops on the Hexagon HTP, none on the CPU; peak memory 34 MB / 60 MB.",
     "Accuracy: NPU (FP16) encoder output matches the FP32 CPU reference with cosine similarity 0.999, and gives an identical, correct transcript of the sample lecture.",
-    "The 85 s sample lecture takes ~1.1 s on the NPU vs 14.9 s on a laptop CPU.",
+    "The 85 s sample lecture takes ~1.1 s on the NPU vs ~6.1 s on the same Snapdragon X Elite's Oryon CPU.",
 ]
 
 IMPACT = [
