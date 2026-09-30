@@ -29,7 +29,6 @@ secrets/
 # --- Editor / OS junk ---
 .vscode/
 .idea/
-.cursor/
 Thumbs.db
 desktop.ini
 .DS_Store
