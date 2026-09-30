@@ -4,7 +4,7 @@
 
 | Time | Show on screen | Say |
 |---|---|---|
-| 0:00-0:15 | Title slide / app header | "Hi, I'm Saira. This is NotesNPU, a private AI note-taker that runs entirely on the Snapdragon NPU of an HP laptop. No internet, no cloud." |
+| 0:00-0:15 | Title slide / app header | "Hi, I'm Mohammed Haris Suhaib. This is NotesNPU, a private AI note-taker that runs entirely on the Snapdragon NPU of an HP laptop. No internet, no cloud." |
 | 0:15-0:30 | Airplane mode icon, status bar reading "Hexagon NPU active" | "Wi-Fi is off. Everything you'll see runs locally." |
 | 0:30-1:00 | Load sample lecture, then Transcribe on-device. Split screen: Task Manager NPU graph spikes | "I load an 85-second biology lecture. Qualcomm AI Hub's Whisper runs on the Hexagon NPU, and the whole lecture is transcribed in a couple of seconds, with the CPU nearly idle." |
 | 1:00-1:15 | Performance JSON: real-time factor, encoder ms | "That's roughly 100x faster than real time, so a one-hour class takes under a minute, on battery." |

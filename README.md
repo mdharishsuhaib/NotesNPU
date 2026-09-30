@@ -69,8 +69,8 @@ Measured on a real Snapdragon X Elite NPU (via Qualcomm AI Hub), Whisper-Base ta
    ```
 2. Clone and set up (downloads about 3 GB of models once):
    ```powershell
-   git clone https://github.com/<your-username>/notesnpu.git
-   cd notesnpu
+   git clone https://github.com/mdharishsuhaib/NotesNPU.git
+   cd NotesNPU
    .\setup.bat          # or: powershell -ExecutionPolicy Bypass -File setup.ps1
    ```
    Use `.\setup.ps1 -NoLLM` for a light install (~300 MB) that uses the extractive study engine.

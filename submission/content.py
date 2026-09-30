@@ -3,8 +3,8 @@
 TITLE = "NotesNPU"
 TAGLINE = "Private, offline AI lecture & meeting copilot - accelerated by the Snapdragon NPU on HP PCs"
 FORM_TITLE = "NotesNPU: Private, Offline AI Lecture & Meeting Copilot on the Snapdragon NPU"
-AUTHOR = "Saira"  # edit before generating
-REPO = "https://github.com/<your-username>/notesnpu"  # edit before generating
+AUTHOR = "Mohammed Haris Suhaib M"
+REPO = "https://github.com/mdharishsuhaib/NotesNPU"
 
 PROBLEM = [
     "Indian students attend 25-30 hours of lectures a week, often in fast, code-mixed Hindi-English, and struggle to take notes and listen at the same time.",

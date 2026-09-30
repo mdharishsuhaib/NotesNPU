@@ -18,7 +18,7 @@ Upload `submission/NotesNPU_Description.pdf` (or `.docx`).
 ### GitHub Repository Link  (limit 500 chars)
 
 ```
-https://github.com/<your-username>/notesnpu
+https://github.com/mdharishsuhaib/NotesNPU
 ```
 
 ### Short Pitch Presentation in PDF
@@ -43,10 +43,8 @@ NotesNPU turns lectures and meetings into transcripts, summaries, study notes, f
 
 ### Pre-submit checklist
 
-- [ ] Replace `<your-username>` in `submission/content.py`, `README.md` and this file, then rebuild the deck and description
-- [ ] Put your name in `AUTHOR` in `submission/content.py`
-- [ ] (Recommended) Run `python -m core.bench --llm` on your Snapdragon PC and put the NPU numbers into `BENCH_ROWS`
-- [ ] Rebuild: `python submission/build_deck.py --pdf` and `python submission/build_description.py --pdf`
+- [x] GitHub link and author name filled in; deck and description rebuilt
+- [x] NPU numbers measured on a real Snapdragon X Elite (Qualcomm AI Hub) are in the deck and description
 - [ ] Open both PDFs and check them
 - [ ] GitHub repo is **public** and the README renders
 - [ ] Submit well before 11:59 PM IST
